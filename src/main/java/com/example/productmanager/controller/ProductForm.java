@@ -8,4 +8,6 @@ import lombok.Setter;
 public class ProductForm {
     private long no;
     private String name;
+    private int price;
+    private int stock;
 }

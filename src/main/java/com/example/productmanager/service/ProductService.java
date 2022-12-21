@@ -2,14 +2,11 @@ package com.example.productmanager.service;
 
 
 import com.example.productmanager.domain.Product;
-import com.example.productmanager.repository.MemoryProductRepository;
 import com.example.productmanager.repository.ProductRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public class ProductService {
 
     //service - memberRepositort, service는 memberRepositort에 종속,
@@ -40,4 +37,14 @@ public class ProductService {
         return productRepository.findByName(productName);
     }
 
+    public void delete(Long no) {
+        Product product = productRepository.findByNo(no).get();
+        productRepository.delete(product);
+    }
+
+    public void update(Product product) {
+        product.setName(product.name);
+        product.setPrice(product.price);
+        product.setPrice(product.price);
+    }
 }

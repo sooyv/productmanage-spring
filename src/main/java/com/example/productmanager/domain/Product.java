@@ -2,19 +2,20 @@ package com.example.productmanager.domain;
 
 import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 //import javax.persistence.Id;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-
-@Getter
-@Setter
 //@Builder
+@Entity
 public class Product {
-//    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long no;
     public String name;
     public int price;

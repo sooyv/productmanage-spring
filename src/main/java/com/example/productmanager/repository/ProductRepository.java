@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository {
+    //jpa - update는 save로 가능
     Product save(Product product);
 
     Optional<Product> findByNo(long no);
@@ -15,4 +16,7 @@ public interface ProductRepository {
     //price, stock은 필요X
 
     List<Product> findAll();
+
+    void delete(Product product);
+
 }

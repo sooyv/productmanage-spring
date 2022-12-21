@@ -1,12 +1,10 @@
 package com.example.productmanager.repository;
 
 import com.example.productmanager.domain.Product;
-import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 
-@Repository
 public class MemoryProductRepository implements ProductRepository {
 
     private static Map<Long, Product> store = new HashMap<>();
@@ -34,7 +32,11 @@ public class MemoryProductRepository implements ProductRepository {
         return new ArrayList<>(store.values());
     }
 
+    @Override
+    public void delete(Product product) { }
+
     public void clearStore() {
         store.clear();
     }
 }
+
