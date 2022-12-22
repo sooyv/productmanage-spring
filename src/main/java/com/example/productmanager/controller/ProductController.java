@@ -6,10 +6,7 @@ import org.hibernate.type.StringNVarcharType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -63,30 +60,28 @@ public class ProductController {
 
     @GetMapping("/products/{no}/edit")
     public String updateProduct(@PathVariable("no") Long no, Model model) {
-        // updateProduct.html을 읽어서
-        // 동적 HTML로 렌더링 해줘야하는데...
-        // 변수가 없다.. => Exception의 원인
-        // 변수는 어디서 줄까?
-        // name, price, stock
         Product product = productService.findOne(no).get();
         model.addAttribute("no", product.getNo());
         model.addAttribute("name", product.getName());
         model.addAttribute("price", product.getPrice());
         model.addAttribute("stock", product.getStock());
 
-        System.out.println(product.getName());
-        System.out.println(product.getPrice());
-
         return "products/updateProduct";
     }
 
-//    @PostMapping("/products/{no}/edit")
-//    public String update(Product product) {
-//        product.setNo(product.getNo());
-//        product.setName(product.getName());
-//        product.setPrice(product.getStock());
-//        product.setStock(product.getStock());
-//        productService.update(product);
-//        return "redirect:/products";
-//    }
+    @PostMapping("/products/{no}/edit")
+    public String update(@PathVariable("no") Long no, Product product) {
+
+        System.out.println(product.getNo());
+        System.out.println(product.getName());
+        System.out.println(product.getPrice());
+        System.out.println(product.getStock());
+
+        product.setNo(no);
+        product.setName(product.getName());
+        product.setPrice(product.getPrice());
+        product.setStock(product.getStock());
+        productService.update(product);
+        return "redirect:/products";
+    }
 }

@@ -1,9 +1,12 @@
 package com.example.productmanager.service;
 
 
+import com.example.productmanager.controller.ProductForm;
 import com.example.productmanager.domain.Product;
 import com.example.productmanager.repository.ProductRepository;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +20,6 @@ public class ProductService {
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
-
     //product 등록
     public Long createProduct(Product product) {
         productRepository.save(product);
@@ -33,18 +35,16 @@ public class ProductService {
         return productRepository.findByNo(productNo);
     }
 
-    public Optional<Product> findName(String productName) {
-        return productRepository.findByName(productName);
-    }
-
     public void delete(Long no) {
         Product product = productRepository.findByNo(no).get();
         productRepository.delete(product);
     }
 
+    @Transactional
     public void update(Product product) {
-        product.setName(product.name);
-        product.setPrice(product.price);
-        product.setPrice(product.price);
+        Product productToUpdate = productRepository.findByNo(product.getNo()).get();
+        productToUpdate.setName(product.getName());
+        productToUpdate.setPrice(product.getPrice());
+        productToUpdate.setStock(product.getStock());
     }
 }
