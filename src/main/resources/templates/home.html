@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <div style="text-align : center">
+<div class="container" style="max-width: 600px">
+    <div class="py-3 text-center">
         <h1>상품 관리</h1>
-        <p>
-            <a href="/products/new">상품 등록</a>
-            <a href="/products">상품 목록</a>
-        </p>
+    </div>
+    <div class="row">
+        <div class="col">
+            <a class="w-100 btn btn-outline-danger" href="/products/new">상품 등록</a>
+        </div>
+        <div class="col">
+            <a class="w-100 btn btn-outline-primary" href="/products">상품 목록</a>
+        </div>
     </div>
 </div> <!-- /container -->
 </body>

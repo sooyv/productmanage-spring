@@ -71,12 +71,10 @@ public class ProductController {
 
     @PostMapping("/products/{no}/edit")
     public String update(@PathVariable("no") Long no, Product product) {
-
-        System.out.println(product.getNo());
-        System.out.println(product.getName());
-        System.out.println(product.getPrice());
-        System.out.println(product.getStock());
-
+//        System.out.println(product.getNo());
+//        System.out.println(product.getName());
+//        System.out.println(product.getPrice());
+//        System.out.println(product.getStock());
         product.setNo(no);
         product.setName(product.getName());
         product.setPrice(product.getPrice());
