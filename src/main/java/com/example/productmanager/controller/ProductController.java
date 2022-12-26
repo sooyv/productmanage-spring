@@ -82,4 +82,12 @@ public class ProductController {
         productService.update(product);
         return "redirect:/products";
     }
+
+    //api
+    @GetMapping("/api")
+    public String apiPage() {
+        return "api/apiPage";
+    }
+
+
 }

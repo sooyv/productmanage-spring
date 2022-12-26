@@ -9,5 +9,4 @@ public class ProductmanagerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProductmanagerApplication.class, args);
 	}
-
 }
